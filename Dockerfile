@@ -7,6 +7,8 @@ MAINTAINER gintire <jin3670@gmail.com>
 #ADD target/lib           /usr/share/myservice/lib
 # Add the service itself
 VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} target/app.jar
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar target/app.jar"]
+ARG DEPENDENCY=target/dependency
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.gintire.GintireApplication"]
