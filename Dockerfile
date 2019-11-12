@@ -7,5 +7,6 @@ MAINTAINER gintire <jin3670@gmail.com>
 #ADD target/lib           /usr/share/myservice/lib
 # Add the service itself
 VOLUME /tmp
-ADD /target/gintonicshop.jar gintonicshop.jar
-ENTRYPOINT ["java","-jar","gintonicshop.jar"]
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar"]
