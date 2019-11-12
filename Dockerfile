@@ -8,5 +8,5 @@ MAINTAINER gintire <jin3670@gmail.com>
 # Add the service itself
 VOLUME /tmp
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar"]
+COPY ${JAR_FILE} target/app.jar
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar target/app.jar"]
