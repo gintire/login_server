@@ -8,4 +8,4 @@ MAINTAINER gintonicshop <jin3670@gmail.com>
 # Add the service itself
 VOLUME /tmp
 ADD /target/gintonicshop-0.0.1-SNAPSHOT.jar gintonicshop.jar
-ENTRYPOINT["java","-jar","gintonicshop.jar"]
+ENTRYPOINT ["java","-jar","gintonicshop.jar"]
