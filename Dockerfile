@@ -7,6 +7,5 @@ MAINTAINER gintire <jin3670@gmail.com>
 #ADD target/lib           /usr/share/myservice/lib
 # Add the service itself
 VOLUME /tmp
-ARG JAR_FILE
-ADD ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+ADD target/*.jar app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
