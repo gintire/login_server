@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>gintire</artifactId>
+    <artifactId>gintonicshop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gintire</name>
     <description>Demo project for Spring Boot</description>
@@ -103,6 +103,9 @@
                 <version>1.4.9</version>
                 <configuration>
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
                 </configuration>
             </plugin>
             <plugin>
