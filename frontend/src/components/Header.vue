@@ -7,7 +7,7 @@
           <li><router-link to="/board?page=0">게시판</router-link></li>
           <li><router-link to="/user">회원 목록</router-link></li>
           <li v-if="!loggedIn"><router-link to="/signup">회원 가입</router-link></li>
-          <li v-if="!loggedIn"><a @click="login">로그인</a></li>
+          <li v-if="!loggedIn"><router-link to="/login">로그인</router-link>
           <li v-if="loggedIn"><router-link to="/user/modify">정보수정</router-link></li>
           <li v-if="loggedIn"><a @click="logout">로그아웃</a></li>
         </ul>
@@ -36,47 +36,6 @@ export default {
   }),
 
   methods: {
-    async login() {
-      const url = `${process.env.VUE_APP_API}/oauth/authorize?${qstr.stringify(this.params)}`;
-      const options = 'width=600, height=600';
-      console.log("param" + this.params);
-      console.log(url);
-      const popup = window.open(url, 'auth', options);
-
-      const param = await this.popupWatcher(popup, this.originHost);
-      await this.$store.commit('setUser', param);
-      await this.getUserDetails();
-    },
-
-    popupWatcher(popup, exitUrl) {
-      const parseUrl = document.createElement('a');
-      parseUrl.href = exitUrl;
-
-      return new Promise((resolve, reject) => {
-        const polling = setInterval(() => {
-          if (!popup || popup.closed || popup === undefined) {
-            clearInterval(polling);
-            reject(new Error('로그인 창 종료됨'));
-          }
-
-          try {
-            if (popup.location.host === parseUrl.host) {
-              const hash = qstr.parse(popup.location.hash.substring(1));
-              if (hash.error) {
-                reject(new Error(hash.error));
-              } else {
-                resolve(hash);
-              }
-              clearInterval(polling);
-              popup.close();
-            }
-          } catch (error) {
-            // cross origin frame exception
-          }
-        }, 250);
-      });
-    },
-
     async getUserDetails() {
       try {
         const username = this.$store.getters.username;
@@ -101,6 +60,5 @@ export default {
       this.$router.push('/');
     },
   },
-
 };
 </script>

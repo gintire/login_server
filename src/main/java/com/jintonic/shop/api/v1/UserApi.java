@@ -32,6 +32,11 @@ public class UserApi {
                 .stream().map(UserDto::of).collect(Collectors.toList());
     }
 
+    @GetMapping("/login")
+    public void login() {
+
+    }
+
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid UserDto userDto) {
         userService.save(userDto);

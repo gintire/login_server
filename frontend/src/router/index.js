@@ -9,6 +9,7 @@ import BoardWrite from '../components/board/Write.vue';
 import BoardModify from '../components/board/Modify.vue';
 import UserList from '../components/user/List.vue';
 import Signup from '../components/user/Signup.vue';
+import Login from '../components/user/Login.vue';
 import UserDetail from '../components/user/Detail.vue';
 
 Vue.use(Router);
@@ -62,6 +63,11 @@ const router = new Router({
       name: 'User/Signup',
       component: Signup,
     },
+    {
+      path: '/login',
+      name: 'User/Login',
+      component: Login,
+    }
   ],
 });
 
