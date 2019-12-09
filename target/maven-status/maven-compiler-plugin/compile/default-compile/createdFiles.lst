@@ -1,7 +1,9 @@
 com\example\gintire\controller\RootController.class
-com\example\gintire\model\UserVO.class
 com\example\gintire\service\ProductService.class
+com\example\gintire\model\UserRepository.class
+com\example\gintire\service\UserService.class
 com\example\gintire\model\ResponseVO.class
+com\example\gintire\model\User.class
 com\example\gintire\model\SnsType.class
 com\example\gintire\controller\WelcomeController.class
 com\example\gintire\controller\UserController.class
